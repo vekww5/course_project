@@ -1,4 +1,4 @@
-package ru.rsatu.pojo;
+package rsatu.pojo;
 
 import javax.persistence.*;
 
