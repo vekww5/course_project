@@ -1,6 +1,6 @@
-package rsatu.service;
+package ru.rgaru.service;
 
-import rsatu.pojo.Learner;
+import ru.rgaru.pojo.Learner;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;

@@ -10,8 +10,7 @@
     <packaging>pom</packaging>
 
     <modules>
-
-        <module>crm</module>
+        <module>crm_</module>
         <module>scheduler</module>
     </modules>
     

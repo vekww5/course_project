@@ -1,7 +1,7 @@
-package rsatu.resource;
+package ru.rgaru.resource;
 
-import rsatu.pojo.Trainer;
-import rsatu.service.TrainerService;
+import ru.rgaru.pojo.Trainer;
+import ru.rgaru.service.TrainerService;
 
 import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
