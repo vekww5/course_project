@@ -12,7 +12,7 @@
     <modules>
 
         <module>crm</module>
-        <module>sheduler</module>
+        <module>scheduler</module>
     </modules>
     
 </project>
