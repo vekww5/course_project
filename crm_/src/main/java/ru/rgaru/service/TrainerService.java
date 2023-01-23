@@ -45,7 +45,6 @@ public class TrainerService {
 
     // Поиск по ID
     public Trainer getTrainerById(Long id_trainer){
-        Trainer tr = em.find(Trainer.class, id_trainer);
-        return tr;
+        return em.find(Trainer.class, id_trainer);
     }
 }

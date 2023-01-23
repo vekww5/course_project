@@ -50,7 +50,6 @@ public class LearnerService {
 //    }
     // Поиск по ID
     public Learner getLearnerById(Long id_learner){
-        Learner lnr = em.find(Learner.class, id_learner);
-        return lnr;
+        return em.find(Learner.class, id_learner);
     }
 }
