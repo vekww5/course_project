@@ -41,8 +41,10 @@ public class LearnerService {
 
     // Получение списка
     public List<Learner> getLearners(){
+        System.out.println("getLearners???");
        // return em.createQuery("select l from Learner l", Learner.class).getResultList();
-        return em.createQuery("select l, s from Learner l left join Section s on l.id_section = s.id_section").getResultList();
+        //return em.createQuery("select l, s from Learner l left join Section s on l.id_section = s.id_section").getResultList();
+        return em.createNativeQuery("select * from learner l left join section s on l.id_section = s.id_section", Learner.class).getResultList();
     }
     // Получение утвержденного списка
 //    public List<Learner> getEnrolledLearners(){

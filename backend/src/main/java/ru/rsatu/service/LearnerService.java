@@ -42,6 +42,7 @@ public class LearnerService {
 
     // Получение списка
     public List<Learner> getLearners(){
+        System.out.println("getLearners???");
        // return em.createQuery("select l from Learner l", Learner.class).getResultList();
         return em.createQuery("select l, s from Learner l left join Section s on l.id_section = s.id_section").getResultList();
     }
