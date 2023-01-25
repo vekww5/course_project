@@ -40,13 +40,14 @@ public class SectionService {
     }
 
     // Получение списка
-    public List<Section> getSections(){
+    /*public List<Section> getSections(){
         //return em.createQuery("select s from Section s", Section.class).getResultList();
-        return em.createQuery("select s, t from Section s left join Trainer t on s.id_trainer = t.id_trainer").getResultList();
-    }
+        return em.createQuery("select s, t from Section s left join Trainer t on s.id_trainer = t.id_trainer", Section.class).getResultList();
+    }*/
 
-    public List<Section> getSections1(){
+    public List<Section> getSections(){
         return em.createQuery("select s from Section s", Section.class).getResultList();
+        //return em.createNativeQuery("select * from section s", Section.class).getResultList();
         //return em.createQuery("select s, t from Section s left join Trainer t on s.id_trainer = t.id_trainer").getResultList();
     }
 
