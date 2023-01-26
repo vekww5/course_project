@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/backend/backend.iml" filepath="$PROJECT_DIR$/backend/backend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/course_project.iml" filepath="$PROJECT_DIR$/.idea/course_project.iml" />
+      <module fileurl="file://$PROJECT_DIR$/crm_/crm_.iml" filepath="$PROJECT_DIR$/crm_/crm_.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sheduler/scheduler.iml" filepath="$PROJECT_DIR$/sheduler/scheduler.iml" />
+      <module fileurl="file://$PROJECT_DIR$/scheduler_/scheduler_.iml" filepath="$PROJECT_DIR$/scheduler_/scheduler_.iml" />
+    </modules>
+  </component>
+</project>
