@@ -8,17 +8,13 @@
         <outputRelativeToContentRoot value="true" />
         <module name="scheduler" />
         <module name="scheduler_" />
-        <module name="backend" />
         <module name="crm_" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="backend" target="11" />
-      <module name="course_project" target="1.5" />
       <module name="crm" target="17" />
-      <module name="crm_" target="17" />
       <module name="scheduler" target="17" />
-      <module name="scheduler_" target="17" />
       <module name="sheduler" target="17" />
     </bytecodeTargetLevel>
   </component>
