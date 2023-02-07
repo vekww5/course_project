@@ -1,5 +1,6 @@
 package ru.rgatu.resource;
 
+import ru.rgatu.dto.HeaderScheduleDTO;
 import ru.rgatu.pojo.HeaderSchedule;
 import ru.rgatu.service.HeaderScheduleService;
 
@@ -35,7 +36,7 @@ public class HeaderScheduleResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/insertHeaderSchedule")
     @RolesAllowed({"editHeader"})
-    public Response insertHeaderSchedule(HeaderSchedule tr){
+    public Response insertHeaderSchedule(HeaderScheduleDTO tr){
         return Response.ok(shs.insertHeaderSchedule(tr)).build();
     }
 
@@ -44,7 +45,7 @@ public class HeaderScheduleResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/updateHeaderSchedule")
     @RolesAllowed({"editHeader"})
-    public Response updateHeaderSchedule(HeaderSchedule tr){
+    public Response updateHeaderSchedule(HeaderScheduleDTO tr){
         return Response.ok(shs.updateHeaderSchedule(tr)).build();
     }
 

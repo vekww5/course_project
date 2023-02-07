@@ -1,4 +1,4 @@
-package ru.rgaru.pojo;
+package ru.rgaru.entity;
 
 import javax.persistence.*;
 

@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="scheduler" />
         <module name="scheduler_" />
+        <module name="db_" />
         <module name="crm_" />
       </profile>
     </annotationProcessing>
@@ -22,6 +23,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="backend" options="-parameters" />
       <module name="crm_" options="-parameters" />
+      <module name="db_" options="-parameters" />
       <module name="scheduler_" options="-parameters" />
     </option>
   </component>

@@ -1,7 +1,11 @@
 package ru.rgaru.resource;
 
-import ru.rgaru.pojo.Trainer;
+import ru.rgaru.entity.Trainer;
+import org.eclipse.microprofile.rest.client.inject.RestClient;
+import ru.rgaru.dto.TrainerDTO;
+import ru.rgaru.service.LearnerServiceExtension;
 import ru.rgaru.service.TrainerService;
+import ru.rgaru.service.TrainerServiceExtension;
 
 import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
@@ -14,6 +18,11 @@ public class TrainerResource {
 
     @Inject
     TrainerService ts;
+
+    @Inject
+    @RestClient
+    TrainerServiceExtension tse;
+
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -35,7 +44,7 @@ public class TrainerResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @RolesAllowed({"editTrainer"})
-    public Response insertTrainer(Trainer tr){
+    public Response insertTrainer(TrainerDTO tr){
         return Response.ok(ts.insertTrainer(tr)).build();
     }
 
@@ -44,7 +53,7 @@ public class TrainerResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @RolesAllowed({"editTrainer"})
-    public Response updateTrainer(Trainer tr){
+    public Response updateTrainer(TrainerDTO tr){
         return Response.ok(ts.updateTrainer(tr)).build();
     }
 

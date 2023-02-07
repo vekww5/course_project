@@ -1,5 +1,6 @@
 package ru.rgatu.resource;
 
+import ru.rgatu.dto.ScheduleDTO;
 import ru.rgatu.service.ScheduleService;
 import ru.rgatu.pojo.Schedule;
 
@@ -35,7 +36,7 @@ public class ScheduleResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/insertSchedule")
     @RolesAllowed({"editSch"})
-    public Response insertSchedule(Schedule tr){
+    public Response insertSchedule(ScheduleDTO tr){
         return Response.ok(ssch.insertSchedule(tr)).build();
     }
 
@@ -44,7 +45,7 @@ public class ScheduleResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/updateSchedule")
     @RolesAllowed({"updateSch", "editSch"})
-    public Response updateSchedule(Schedule tr){
+    public Response updateSchedule(ScheduleDTO tr){
         return Response.ok(ssch.updateSchedule(tr)).build();
     }
 

@@ -1,4 +1,4 @@
-package ru.rgaru.pojo;
+package ru.rgatu.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 

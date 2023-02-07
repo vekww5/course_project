@@ -1,5 +1,6 @@
 package ru.rgatu.resource;
 
+import ru.rgatu.dto.SectionDTO;
 import ru.rgatu.service.SectionService;
 import ru.rgatu.pojo.Section;
 
@@ -35,7 +36,7 @@ public class SectionResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/insertSection")
     @RolesAllowed({"editSection"})
-    public Response insertSection(Section tr){
+    public Response insertSection(SectionDTO tr){
         return Response.ok(ss.insertSection(tr)).build();
     }
 
@@ -44,7 +45,7 @@ public class SectionResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/updateSection")
     @RolesAllowed({"editSection"})
-    public Response updateSection(Section tr){
+    public Response updateSection(SectionDTO tr){
         return Response.ok(ss.updateSection(tr)).build();
     }
 

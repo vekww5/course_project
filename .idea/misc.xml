@@ -8,6 +8,7 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/crm_/pom.xml" />
         <option value="$PROJECT_DIR$/scheduler_/pom.xml" />
+        <option value="$PROJECT_DIR$/db_/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

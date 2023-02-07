@@ -1,10 +1,11 @@
 package ru.rgaru.service;
 
-import ru.rgaru.pojo.Trainer;
+import org.eclipse.microprofile.rest.client.inject.RestClient;
+import ru.rgaru.dto.TrainerDTO;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
+
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -12,39 +13,36 @@ import java.util.List;
 public class TrainerService {
 
     @Inject
-    EntityManager em;
+    @RestClient
+    TrainerServiceExtension trainerServiceExtension;
 
     //вставка данных
     @Transactional
-    public Trainer insertTrainer(Trainer tr) {
-        em.persist(tr);
-        em.flush();
+    public TrainerDTO insertTrainer(TrainerDTO tr) {
+        trainerServiceExtension.insertTrainer(tr);
         return tr;
     }
 
     //обновление данных
     @Transactional
-    public Trainer updateTrainer(Trainer tr) {
-        em.merge(tr);
-        em.flush();
+    public TrainerDTO updateTrainer(TrainerDTO tr) {
+        trainerServiceExtension.updateTrainer(tr);
         return tr;
     }
 
     //удаление данных
     @Transactional
     public void deleteTrainer(Long id_trainer) {
-        Trainer t = this.getTrainerById(id_trainer);
-        em.remove(t);
-        em.flush();
+        trainerServiceExtension.deleteTrainer(id_trainer);
     }
 
     // Получение списка
-    public List<Trainer> getTrainers(){
-        return em.createQuery("select t from Trainer t", Trainer.class).getResultList();
+    public List<TrainerDTO> getTrainers(){
+        return trainerServiceExtension.getTrainers();
     }
 
     // Поиск по ID
-    public Trainer getTrainerById(Long id_trainer){
-        return em.find(Trainer.class, id_trainer);
+    public TrainerDTO getTrainerById(Long id_trainer){
+        return trainerServiceExtension.getTrainersById(id_trainer);
     }
 }

@@ -1,10 +1,10 @@
 package ru.rgatu.service;
 
-import ru.rgatu.pojo.Section;
+import org.eclipse.microprofile.rest.client.inject.RestClient;
+import ru.rgatu.dto.SectionDTO;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -12,31 +12,27 @@ import java.util.List;
 public class SectionService {
 
     @Inject
-    EntityManager em;
+    @RestClient
+    SectionServiceExtension sectionServiceExtension;
 
     //вставка данных
     @Transactional
-    public Section insertSection(Section sc) {
-        //em.merge(sc);
-        em.persist(sc);
-        em.flush();
+    public SectionDTO insertSection(SectionDTO sc) {
+        sectionServiceExtension.insertSection(sc);
         return sc;
     }
 
     //обновление данных
     @Transactional
-    public Section updateSection(Section sc) {
-        em.merge(sc);
-        em.flush();
+    public SectionDTO updateSection(SectionDTO sc) {
+        sectionServiceExtension.updateSection(sc);
         return sc;
     }
 
     //удаление данных
     @Transactional
     public void deleteSection(Long id_section) {
-        Section l = this.getSectionById(id_section);
-        em.remove(l);
-        em.flush();
+        sectionServiceExtension.deleteSection(id_section);
     }
 
     // Получение списка
@@ -45,15 +41,13 @@ public class SectionService {
         return em.createQuery("select s, t from Section s left join Trainer t on s.id_trainer = t.id_trainer", Section.class).getResultList();
     }*/
 
-    public List<Section> getSections(){
-        return em.createQuery("select s from Section s", Section.class).getResultList();
-        //return em.createNativeQuery("select * from section s", Section.class).getResultList();
-        //return em.createQuery("select s, t from Section s left join Trainer t on s.id_trainer = t.id_trainer").getResultList();
+    public List<Object[]> getSections(){
+        return sectionServiceExtension.getSections();
     }
 
+
     // Поиск по ID
-    public Section getSectionById(Long id_section){
-        Section sc = em.find(Section.class, id_section);
-        return sc;
+    public SectionDTO getSectionById(Long id_section){
+        return sectionServiceExtension.getSectionById(id_section);
     }
 }

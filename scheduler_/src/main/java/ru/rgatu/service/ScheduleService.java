@@ -1,10 +1,10 @@
 package ru.rgatu.service;
 
-import ru.rgatu.pojo.Schedule;
+import org.eclipse.microprofile.rest.client.inject.RestClient;
+import ru.rgatu.dto.ScheduleDTO;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -12,42 +12,36 @@ import java.util.List;
 public class ScheduleService {
 
     @Inject
-    EntityManager em;
+    @RestClient
+    ScheduleServiceExtension scheduleServiceExtension;
 
     //вставка данных
     @Transactional
-    public Schedule insertSchedule(Schedule sch) {
-        //em.merge(sch);
-        em.persist(sch);
-        em.flush();
+    public ScheduleDTO insertSchedule(ScheduleDTO sch) {
+        scheduleServiceExtension.insertSchedule(sch);
         return sch;
     }
 
     //обновление данных
     @Transactional
-    public Schedule updateSchedule(Schedule sch) {
-        em.merge(sch);
-        em.flush();
+    public ScheduleDTO updateSchedule(ScheduleDTO sch) {
+        scheduleServiceExtension.updateSchedule(sch);
         return sch;
     }
 
     //удаление данных
     @Transactional
     public void deleteSchedule(Long id_Schedule) {
-        Schedule l = this.getScheduleById(id_Schedule);
-        em.remove(l);
-        em.flush();
+        scheduleServiceExtension.deleteSchedule(id_Schedule);
     }
 
     // Получение списка
-    public List<Schedule> getSchedules(){
-       // return em.createQuery("select s from Schedule s", Schedule.class).getResultList();
-        return em.createQuery("select sch, pl, hs, s from Schedule sch left join Place pl on sch.id_place = pl.id_place left join HeaderSchedule hs on sch.id_header_schedule = hs.id_header_schedule left join Section s on sch.id_section = s.id_section").getResultList();
+    public List<Object[]> getSchedules(){
+        return scheduleServiceExtension.getSchedules();
     }
 
     // Поиск по ID
-    public Schedule getScheduleById(Long id_schedule){
-        Schedule sch = em.find(Schedule.class, id_schedule);
-        return sch;
+    public ScheduleDTO getScheduleById(Long id_schedule){
+        return scheduleServiceExtension.getScheduleById(id_schedule);
     }
 }

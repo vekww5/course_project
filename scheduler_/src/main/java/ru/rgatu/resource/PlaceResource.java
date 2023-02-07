@@ -1,5 +1,6 @@
 package ru.rgatu.resource;
 
+import ru.rgatu.dto.PlaceDTO;
 import ru.rgatu.pojo.Place;
 import ru.rgatu.service.PlaceService;
 
@@ -35,7 +36,7 @@ public class PlaceResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/insertPlace")
     @RolesAllowed({"editPlace"})
-    public Response insertPlace(Place tr){
+    public Response insertPlace(PlaceDTO tr){
         return Response.ok(ps.insertPlace(tr)).build();
     }
 
@@ -44,7 +45,7 @@ public class PlaceResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/updatePlace")
     @RolesAllowed({"editPlace"})
-    public Response updatePlace(Place tr){
+    public Response updatePlace(PlaceDTO tr){
         return Response.ok(ps.updatePlace(tr)).build();
     }
 

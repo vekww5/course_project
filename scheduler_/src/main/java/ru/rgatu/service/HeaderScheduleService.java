@@ -1,52 +1,54 @@
 package ru.rgatu.service;
 
-import ru.rgatu.pojo.HeaderSchedule;
+import org.eclipse.microprofile.rest.client.inject.RestClient;
+import ru.rgatu.dto.HeaderScheduleDTO;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 import java.util.List;
+
+import org.jboss.logging.Logger;
 
 @ApplicationScoped
 public class HeaderScheduleService {
 
+    private static final Logger LOG = Logger.getLogger(HeaderScheduleDTO.class);
+
     @Inject
-    EntityManager em;
+    @RestClient
+    HeaderScheduleServiceExtension headerScheduleServiceExtensions;
 
     //вставка данных
     @Transactional
-    public HeaderSchedule insertHeaderSchedule(HeaderSchedule hsch) {
-        //em.merge(hsch);
-        em.persist(hsch);
-        em.flush();
+    public HeaderScheduleDTO insertHeaderSchedule(HeaderScheduleDTO hsch) {
+        headerScheduleServiceExtensions.insertHeaderSchedule(hsch);
+        LOG.info(String.format("Добавлен новый заголовок рассписания: %s", hsch.getHeader_name()));
         return hsch;
     }
 
     //обновление данных
     @Transactional
-    public HeaderSchedule updateHeaderSchedule(HeaderSchedule hsch) {
-        em.merge(hsch);
-        em.flush();
+    public HeaderScheduleDTO updateHeaderSchedule(HeaderScheduleDTO hsch) {;
+        headerScheduleServiceExtensions.updateHeaderSchedule(hsch);
+        LOG.info(String.format("Изменен заголовок рассписания: %s", hsch.getHeader_name()));
         return hsch;
     }
 
     //удаление данных
     @Transactional
     public void deleteHeaderSchedule(Long id_HeaderSchedule) {
-        HeaderSchedule l = this.getHeaderScheduleById(id_HeaderSchedule);
-        em.remove(l);
-        em.flush();
+        headerScheduleServiceExtensions.deleteHeaderSchedule(id_HeaderSchedule);
+        LOG.info(String.format("Удален заголовок рассписания: %s",id_HeaderSchedule));
     }
 
     // Получение списка
-    public List<HeaderSchedule> getHeaderSchedules(){
-        return em.createQuery("select hs from HeaderSchedule hs", HeaderSchedule.class).getResultList();
+    public List<HeaderScheduleDTO> getHeaderSchedules(){
+        return headerScheduleServiceExtensions.getHeaderSchedules();
     }
 
     // Поиск по ID
-    public HeaderSchedule getHeaderScheduleById(Long id_header_schedule){
-        HeaderSchedule hsch = em.find(HeaderSchedule.class, id_header_schedule);
-        return hsch;
+    public HeaderScheduleDTO getHeaderScheduleById(Long id_header_schedule){
+        return headerScheduleServiceExtensions.getHeaderScheduleById(id_header_schedule);
     }
 }

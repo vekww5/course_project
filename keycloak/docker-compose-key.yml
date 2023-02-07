@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:16.1.0
+    container_name: keycloak
+    hostname: http://0.0.0.0:8085
+    environment:
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: admin
+      KEYCLOAK_IMPORT: /keycloak/realm.json
+
+      #KC_HOSTNAME_URL: http://0.0.0.0:8085
+      #KC_HOSTNAME_ADMIN_URL: http://0.0.0.0:8085
+      #KC_HOSTNAME_URL: http://192.168.122.1:8085
+      #KC_HOSTNAME_ADMIN_URL: http://192.168.122.1:8085
+
+      #KC_HTTP_ENABLED: "true"
+      #PROXY_ADDRESS_FORWARDING: "true"
+      #VIRTUAL_HOST: keycloak
+
+    volumes:
+      - ./realm.json:/keycloak/realm.json:ro
+    ports:
+      - "8085:8080"
+
+

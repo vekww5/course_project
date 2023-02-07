@@ -5,6 +5,8 @@
     <file url="file://$PROJECT_DIR$/backend/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/crm_/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/crm_/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/db_/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/db_/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/scheduler_/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/scheduler_/src/main/resources" charset="UTF-8" />
   </component>

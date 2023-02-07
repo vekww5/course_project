@@ -1,52 +1,48 @@
 package ru.rgatu.service;
 
-import ru.rgatu.pojo.Place;
+import org.eclipse.microprofile.rest.client.inject.RestClient;
+import ru.rgatu.dto.PlaceDTO;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 import java.util.List;
 
 @ApplicationScoped
 public class PlaceService {
 
+
     @Inject
-    EntityManager em;
+    @RestClient
+    PlaceServiceExtension placeServiceExtension;
 
     //вставка данных
     @Transactional 
-    public Place insertPlace(Place pl) {
-        //em.merge(pl);
-        em.persist(pl);
-        em.flush();
+    public PlaceDTO insertPlace(PlaceDTO pl) {
+        placeServiceExtension.insertPlace(pl);
         return pl;
     }
 
     //обновление данных
     @Transactional
-    public Place updatePlace(Place pl) {
-        em.merge(pl);
-        em.flush();
+    public PlaceDTO updatePlace(PlaceDTO pl) {
+        placeServiceExtension.updatePlace(pl);
         return pl;
     }
 
     //удаление данных
     @Transactional
     public void deletePlace(Long id_place) {
-        Place pl = this.getPlaceById(id_place);
-        em.remove(pl);
-        em.flush();
+        placeServiceExtension.deletePlace(id_place);
     }
 
     // Получение списка
-    public List<Place> getPlaces(){
-        return em.createQuery("select pl from Place pl", Place.class).getResultList();
+    public List<PlaceDTO> getPlaces(){
+        return placeServiceExtension.getPlaces();
     }
 
     // Поиск по ID
-    public Place getPlaceById(Long id_place){
-        Place pl = em.find(Place.class, id_place);
-        return pl;
+    public PlaceDTO getPlaceById(Long id_place){
+        return placeServiceExtension.getPlaceById(id_place);
     }
 }
