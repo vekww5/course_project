@@ -67,6 +67,8 @@ export default {
     refreshTrainers() {
       TrainerDataService.retrieveAllTrainers().then((res) => {
         this.trainers = res.data;
+
+        console.log(res.data)
       });
     },
     addTrainer() {

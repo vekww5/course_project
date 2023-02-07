@@ -21,7 +21,7 @@
             <b-button variant="btn" @click="updateLearner(data.item[0].id_learner)">Δ</b-button>
           </template>
           <template v-slot:cell(Delete)="data">
-            <b-button variant="btn" @click="deleteLearner(data.item[0].id_learner)">-</b-button>
+            <b-button variant="btn" @click="deleteLearner(data.item[0].id_learner)">-</b-button>  <!-- data.item[0].id_learner -->
           </template>
         </b-table>
         <b-pagination
@@ -63,19 +63,21 @@ export default {
       filter: "",
       message: "",
       perPage: 5,
-      currentPage: 1,
+      currentPage: 1
     };
   },
   methods: {
     refreshLearners() {
       LearnerDataService.retrieveAllLearners().then((res) => {
         this.learners = res.data;
+        console.log(this.learners)
       });
     },
     addLearner() {
       this.$router.push(`/learners/-1`);
     },
     updateLearner(id_learner) {
+      console.log(id_learner);
       this.$router.push(`/learners/${id_learner}`);
     },
     deleteLearner(id_learner) {

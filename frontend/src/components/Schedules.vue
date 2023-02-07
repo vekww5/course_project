@@ -71,6 +71,7 @@ export default {
     refreshSchedules() {
       ScheduleDataService.retrieveAllSchedules().then((res) => {
         this.schedules = res.data;
+        console.log(res.data);
       });
     },
     addSchedule() {

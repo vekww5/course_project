@@ -67,6 +67,8 @@ export default {
     refreshSections() {
       SectionDataService.retrieveAllSections().then((res) => {
         this.sections = res.data;
+
+        console.log(res.data)
       });
     },
     addSection() {

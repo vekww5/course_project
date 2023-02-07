@@ -23,7 +23,7 @@ Vue.use(VueKeyCloak,{
    },
 	config: {
       realm : 'sportrealm',
-      url : 'http://localhost:8082/auth',
+      url : 'http://localhost:8085/auth',
       clientId : 'app-auth',
    },
    onReady (keycloak) {
