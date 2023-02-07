@@ -1,9 +1,8 @@
 package ru.rgaru.resource;
 
-import ru.rgaru.entity.Trainer;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 import ru.rgaru.dto.TrainerDTO;
-import ru.rgaru.service.LearnerServiceExtension;
+
 import ru.rgaru.service.TrainerService;
 import ru.rgaru.service.TrainerServiceExtension;
 

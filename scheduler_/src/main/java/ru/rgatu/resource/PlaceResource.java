@@ -1,7 +1,6 @@
 package ru.rgatu.resource;
 
 import ru.rgatu.dto.PlaceDTO;
-import ru.rgatu.pojo.Place;
 import ru.rgatu.service.PlaceService;
 
 import javax.annotation.security.RolesAllowed;

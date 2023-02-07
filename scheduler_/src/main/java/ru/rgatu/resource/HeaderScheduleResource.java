@@ -1,7 +1,6 @@
 package ru.rgatu.resource;
 
 import ru.rgatu.dto.HeaderScheduleDTO;
-import ru.rgatu.pojo.HeaderSchedule;
 import ru.rgatu.service.HeaderScheduleService;
 
 import javax.annotation.security.RolesAllowed;
