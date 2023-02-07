@@ -25,6 +25,11 @@ public interface SectionServiceExtension {
     @Path("getSections")
     List<Object[]> getSections();
 
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("getSections1")
+    List<SectionDTO> getSections1();
+
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)

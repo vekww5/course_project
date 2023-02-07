@@ -25,6 +25,14 @@ public class SectionResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
+    @Path("/getSections1")
+    @RolesAllowed({"watchSSL"})
+    public Response getSections1(){
+        return Response.ok(ss.getSections1()).build();
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
     @Path("/{id_section}")
     public Response getSectionById(@PathParam("id_section") Long id_section){
         return Response.ok(ss.getSectionById(id_section)).build();

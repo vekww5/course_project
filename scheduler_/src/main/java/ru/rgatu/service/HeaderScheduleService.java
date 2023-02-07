@@ -23,7 +23,7 @@ public class HeaderScheduleService {
     @Transactional
     public HeaderScheduleDTO insertHeaderSchedule(HeaderScheduleDTO hsch) {
         headerScheduleServiceExtensions.insertHeaderSchedule(hsch);
-        LOG.info(String.format("Добавлен новый заголовок рассписания: %s", hsch.getHeader_name()));
+        LOG.info(String.format("Добавлен новый заголовок расписания: %s", hsch.getHeader_name()));
         return hsch;
     }
 
@@ -31,7 +31,7 @@ public class HeaderScheduleService {
     @Transactional
     public HeaderScheduleDTO updateHeaderSchedule(HeaderScheduleDTO hsch) {;
         headerScheduleServiceExtensions.updateHeaderSchedule(hsch);
-        LOG.info(String.format("Изменен заголовок рассписания: %s", hsch.getHeader_name()));
+        LOG.info(String.format("Изменен заголовок расписания: %s", hsch.getHeader_name()));
         return hsch;
     }
 
@@ -39,7 +39,7 @@ public class HeaderScheduleService {
     @Transactional
     public void deleteHeaderSchedule(Long id_HeaderSchedule) {
         headerScheduleServiceExtensions.deleteHeaderSchedule(id_HeaderSchedule);
-        LOG.info(String.format("Удален заголовок рассписания: %s",id_HeaderSchedule));
+        LOG.info(String.format("Удален заголовок расписания: %s",id_HeaderSchedule));
     }
 
     // Получение списка

@@ -1,20 +1,18 @@
 package ru.rgaru.service;
 
 import org.eclipse.microprofile.rest.client.inject.RestClient;
+import org.jboss.logging.Logger;
 import ru.rgaru.dto.LearnerDTO;
-//import ru.rgaru.entity.Learner;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 import java.util.List;
 
 @ApplicationScoped
 public class LearnerService {
 
-    @Inject
-    EntityManager em;
+    private static final Logger LOG = Logger.getLogger(LearnerDTO.class);
 
     @Inject
     @RestClient
@@ -24,6 +22,7 @@ public class LearnerService {
     @Transactional
     public LearnerDTO insertLearner(LearnerDTO lnr) {
         learnerServiceExtension.insertLearner(lnr);
+        LOG.info(String.format("Добавлен новый ученик: %s", lnr));
         return lnr;
     }
 
@@ -31,6 +30,7 @@ public class LearnerService {
     @Transactional
     public LearnerDTO updateLearner(LearnerDTO lnr) {
         learnerServiceExtension.updateLearner(lnr);
+        LOG.info(String.format("Изменены данные ученика: %s", lnr.getId_learner()));
         return lnr;
     }
 
@@ -38,12 +38,14 @@ public class LearnerService {
     @Transactional
     public void deleteLearner(Long id_learner) {
         learnerServiceExtension.deleteLearner(id_learner);
+        LOG.info(String.format("Удален ученик: %s", id_learner));
     }
 
     // Получение списка
     public List<Object[]> getLearners(){
         return learnerServiceExtension.getLearners();
     }
+
     // Получение утвержденного списка
 //    public List<Learner> getEnrolledLearners(){
 //        return em.createQuery("select l from Learner l where enrolled = true", Learner.class).getResultList();
