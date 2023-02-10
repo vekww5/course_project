@@ -11,8 +11,6 @@ public class ConsulClient {
         @ConfigProperty(name = "consul.url")
         String consul_url;
 
-        //@Produces
-        //Consul consulClient = Consul.builder().withUrl(consul_url).build();
         @Produces
         public Consul ConsulClientFunc(){
                 return Consul.builder().withUrl(consul_url).build();

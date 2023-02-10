@@ -31,8 +31,7 @@ public class ConsulLifecycle {
     String host_url;
 
     void onStart(@Observes StartupEvent ev) {
-        //ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
-        //executorService.schedule(() -> {
+
 
             HealthClient healthClient = consulClient.healthClient();
             List<ServiceHealth> instances = healthClient.getHealthyServiceInstances(appName).getResponse();
@@ -49,7 +48,6 @@ public class ConsulLifecycle {
             consulClient.agentClient().register(registration);
             LOGGER.info("Instance registered: id={}, address={}:{}", registration.getId(),host_url, port);
 
-       // }, 5000, TimeUnit.MILLISECONDS);
     }
 
     void onStop(@Observes ShutdownEvent ev) {
