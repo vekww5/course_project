@@ -2,7 +2,6 @@ package ru.rgatu.resource;
 
 import ru.rgatu.dto.ScheduleDTO;
 import ru.rgatu.service.ScheduleService;
-import ru.rgatu.pojo.Schedule;
 
 import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;

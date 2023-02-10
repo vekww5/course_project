@@ -43,7 +43,7 @@ services:
     #volumes:
 
   crm:
-    image: crm_/resources:1.0-SNAPSHOT
+    image: crm
     container_name: crm_container
     hostname: crm
     environment:

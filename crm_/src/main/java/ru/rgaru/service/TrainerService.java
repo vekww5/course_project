@@ -32,7 +32,7 @@ public class TrainerService {
     @Transactional
     public TrainerDTO updateTrainer(TrainerDTO tr) {
         trainerServiceExtension.updateTrainer(tr);
-        LOG.info(String.format("Изменент тренер: %s", tr.getId_trainer()));
+        LOG.info(String.format("Изменен тренер: %s", tr.getId_trainer()));
         return tr;
     }
 

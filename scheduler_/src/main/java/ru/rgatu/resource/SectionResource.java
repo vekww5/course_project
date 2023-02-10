@@ -2,7 +2,6 @@ package ru.rgatu.resource;
 
 import ru.rgatu.dto.SectionDTO;
 import ru.rgatu.service.SectionService;
-import ru.rgatu.pojo.Section;
 
 import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;

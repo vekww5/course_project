@@ -2,22 +2,26 @@ version: "3.8"
 
 services:
   crm:
-    image: crm
+    image: registry-1.docker.io/library/crm:latest
     container_name: crm_container
     hostname: crm
-    environment:
-      HTTP_BIND_PORT: 8082
-      KEYCLOAK_HOST: keycloak
-      KEYCLOAK_PORT: 8080
     ports:
-      - "8082:8080"
+      - "8080:8080"
+    environment:
+      APP_PORT: 8080
+      DB_URL: 192.168.122.1:5432
+      KEYCLOAK_URL: http://192.168.122.1:8085
+      LOGSTASH_URL: 192.168.122.1:12202
+      BD_SERVICE_URL: http://192.168.122.1:8086
+      CONSUL_URL: http://192.168.122.1:8500
+
 
   scheduler:
-    image: scheduler
+    image: registry-1.docker.io/library/scheduler:latest
     container_name: scheduler_container
     hostname: scheduler
     environment:
-      HTTP_BIND_PORT: 8082
+      HTTP_BIND_PORT: 8085
       KEYCLOAK_HOST: keycloak
       KEYCLOAK_PORT: 8089
     ports:

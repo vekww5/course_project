@@ -21,9 +21,10 @@ Vue.use(VueKeyCloak,{
      checkLoginIframe: false, 
      onLoad: 'login-required', 
    },
+
 	config: {
       realm : 'sportrealm',
-      url : 'http://localhost:8085/auth',
+      url : 'http://192.168.122.1:8085/auth',
       clientId : 'app-auth',
    },
    onReady (keycloak) {

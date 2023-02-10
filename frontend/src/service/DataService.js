@@ -2,7 +2,7 @@ import axios from 'axios'
 import router from "@/routes";
 
 
-const API_URL_1 = 'http://localhost/crm'
+const API_URL_1 = 'http://192.168.122.1/crm'
 const API_URL_2 = 'http://localhost/scheduler'
 
 //можно и так
