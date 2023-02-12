@@ -4,8 +4,8 @@ services:
 
   scheduler-1:
     image: registry-1.docker.io/library/scheduler:latest
-    container_name: scheduler_container
-    hostname: scheduler
+    container_name: scheduler_container_1
+    hostname: scheduler_1
     ports:
       - "8089:8089"
     environment:
@@ -18,8 +18,8 @@ services:
 
   scheduler-2:
     image: registry-1.docker.io/library/scheduler:latest
-    container_name: scheduler_container
-    hostname: scheduler
+    container_name: scheduler_container_2
+    hostname: scheduler_2
     ports:
       - "8090:8090"
     environment:
