@@ -1,0 +1,33 @@
+version: "3.8"
+
+services:
+
+  scheduler-1:
+    image: registry-1.docker.io/library/scheduler:latest
+    container_name: scheduler_container
+    hostname: scheduler
+    ports:
+      - "8089:8089"
+    environment:
+      APP_PORT: 8089
+      DB_URL: 192.168.122.1:5432
+      KEYCLOAK_URL: http://192.168.122.1:8085
+      LOGSTASH_URL: 192.168.122.1:12202
+      BD_SERVICE_URL: http://192.168.122.1:8086
+      CONSUL_URL: http://192.168.122.1:8500
+
+  scheduler-2:
+    image: registry-1.docker.io/library/scheduler:latest
+    container_name: scheduler_container
+    hostname: scheduler
+    ports:
+      - "8090:8090"
+    environment:
+      APP_PORT: 8090
+      DB_URL: 192.168.122.1:5432
+      KEYCLOAK_URL: http://192.168.122.1:8085
+      LOGSTASH_URL: 192.168.122.1:12202
+      BD_SERVICE_URL: http://192.168.122.1:8086
+      CONSUL_URL: http://192.168.122.1:8500
+
+# docker-compose up -d name
