@@ -2,10 +2,10 @@ version: "3.8"
 
 services:
 
-  crm-1:
+  crm-service_1:
     image: registry-1.docker.io/library/crm:latest
     container_name: crm_container_1
-    hostname: crm_1
+    hostname: crm-service_1
     ports:
       - "8080:8080"
     environment:
@@ -16,10 +16,10 @@ services:
       BD_SERVICE_URL: http://192.168.122.1:8086
       CONSUL_URL: http://192.168.122.1:8500
 
-  crm-2:
+  crm-service_2:
     image: registry-1.docker.io/library/crm:latest
     container_name: crm_container_2
-    hostname: crm_2
+    hostname: crm-service_2
     ports:
       - "8083:8083"
     environment:
