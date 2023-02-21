@@ -1,11 +1,9 @@
 global:
-  scrape_interval: 15s
-  evaluation_interval:  15s
+  scrape_interval: 15s                # определяет, как часто Prometheus будет очищать цели
+  #evaluation_interval:  15s          # управляет тем, как часто Prometheus будет проверять правила.
 
-#rule_files:
-#  - alert.yal
 
-scrape_configs:
+scrape_configs:                       # определяет, какие ресурсы мониторит Prometheus
   - job_name: prometheus
 #    metrics_path: /metrics
     static_configs:
