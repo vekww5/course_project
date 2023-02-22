@@ -10,7 +10,6 @@ services:
       - "8089:8089"
     environment:
       APP_PORT: 8089
-      DB_URL: 192.168.122.1:5432
       KEYCLOAK_URL: http://192.168.122.1:8085
       LOGSTASH_URL: 192.168.122.1:12202
       BD_SERVICE_URL: http://192.168.122.1:8086
@@ -24,7 +23,6 @@ services:
       - "8090:8090"
     environment:
       APP_PORT: 8090
-      DB_URL: 192.168.122.1:5432
       KEYCLOAK_URL: http://192.168.122.1:8085
       LOGSTASH_URL: 192.168.122.1:12202
       BD_SERVICE_URL: http://192.168.122.1:8086
