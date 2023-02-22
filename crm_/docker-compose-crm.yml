@@ -16,6 +16,7 @@ services:
       BD_SERVICE_URL: http://192.168.122.1:8086
       CONSUL_URL: http://192.168.122.1:8500
 
+
   crm-service_2:
     image: registry-1.docker.io/library/crm:latest
     container_name: crm_container_2
@@ -29,5 +30,7 @@ services:
       LOGSTASH_URL: 192.168.122.1:12202
       BD_SERVICE_URL: http://192.168.122.1:8086
       CONSUL_URL: http://192.168.122.1:8500
+    depends_on:
+      - crm-service_1
 
-# docker-compose up -d name
+      # docker-compose up -d name
