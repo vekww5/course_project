@@ -10,5 +10,14 @@ services:
       - "8500:8500"
       - "8300:8300"
       - "8600:53/udp"
+  nginx:
+    image: nginx
+    container_name: nginx
+    restart: always
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/conf:/etc/nginx/conf.d
+      #- ./nginx/templates:/etc/consul-templates
 
 # docker-compose up -d name
