@@ -11,9 +11,8 @@ services:
       - "8300:8300"
       - "8600:53/udp"
   nginx:
-    image: nginx
+    image: nginx:latest
     container_name: nginx
-    restart: always
     ports:
       - "80:80"
     volumes:
