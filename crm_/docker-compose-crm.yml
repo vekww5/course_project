@@ -14,6 +14,7 @@ services:
       LOGSTASH_URL: 192.168.122.1:12202
       BD_SERVICE_URL: http://192.168.122.1:8086
       CONSUL_URL: http://192.168.122.1:8500
+      HOST_URL: http://192.168.122.215
 
 
   crm-service_2:
