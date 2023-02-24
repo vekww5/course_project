@@ -10,6 +10,10 @@ services:
       - "8500:8500"
       - "8300:8300"
       - "8600:53/udp"
+    volumes:
+      - ./consul/service.hcl:/etc/consul.d
+
+
   nginx:
     image: nginx:latest
     container_name: nginx
@@ -17,6 +21,6 @@ services:
       - "80:80"
     volumes:
       - ./nginx/conf:/etc/nginx/conf.d
-      #- ./nginx/templates:/etc/consul-templates
+      - ./nginx/templates:/etc/consul-templates
 
 # docker-compose up -d name
