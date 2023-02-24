@@ -11,5 +11,5 @@ template {
   source      = "/etc/nginx/conf.d/load-balancer.conf.ctmpl"
   destination = "/etc/nginx/conf.d/load-balancer.conf"
   perms       = 0600
-
+  command     = "service nginx reload"
 }

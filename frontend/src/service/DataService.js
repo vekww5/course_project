@@ -3,7 +3,7 @@ import router from "@/routes";
 
 
 const API_URL_1 = 'http://192.168.122.1/crm-service'
-const API_URL_2 = 'http://192.168.122.1/scheduler'
+const API_URL_2 = 'http://192.168.122.1/scheduler-service'
 
 //можно и так
 //const header = {'Authorization': 'Bearer ' + router.app.$keycloak.token};
