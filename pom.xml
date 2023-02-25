@@ -12,6 +12,7 @@
     <modules>
         <module>crm_</module>
         <module>scheduler_</module>
+        <module>db_</module>
     </modules>
     
 </project>
