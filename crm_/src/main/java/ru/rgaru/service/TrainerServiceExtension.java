@@ -4,7 +4,6 @@ import org.eclipse.microprofile.rest.client.annotation.RegisterClientHeaders;
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 
 import ru.rgaru.RequestJWTHeaderFactory;
-import ru.rgaru.dto.LearnerDTO;
 import ru.rgaru.dto.TrainerDTO;
 
 import javax.ws.rs.*;

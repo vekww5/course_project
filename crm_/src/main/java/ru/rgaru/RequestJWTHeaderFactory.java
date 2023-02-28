@@ -12,7 +12,6 @@ import javax.ws.rs.core.MultivaluedMap;
 public class RequestJWTHeaderFactory implements ClientHeadersFactory {
     @Inject
     JsonWebToken jwt;
-
     @Override
     public MultivaluedMap<String, String> update(MultivaluedMap<String, String> incomingHeaders, MultivaluedMap<String, String> clientOutgoingHeaders) {
         MultivaluedMap<String, String> result = new MultivaluedHashMap<>();

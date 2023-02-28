@@ -22,7 +22,6 @@ public class TrainerResource {
     @RestClient
     TrainerServiceExtension tse;
 
-
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/getTrainers")

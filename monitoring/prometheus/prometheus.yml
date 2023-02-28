@@ -1,15 +1,14 @@
 global:
   scrape_interval: 15s                # определяет, как часто Prometheus будет очищать цели
-  #evaluation_interval:  15s          # управляет тем, как часто Prometheus будет проверять правила.
+  evaluation_interval:  15s          # управляет тем, как часто Prometheus будет проверять правила.
 
 
 scrape_configs:                       # определяет, какие ресурсы мониторит Prometheus
   - job_name: prometheus
-#    metrics_path: /metrics
     static_configs:
       - targets: ['localhost:9090']
 
   - job_name: consul-metrics
     metrics_path: /q/metrics
     static_configs:
-      - targets: ['localhost:8080']
+      - targets: ['192.168.122.1:8500']

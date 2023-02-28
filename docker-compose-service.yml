@@ -13,7 +13,6 @@ services:
     volumes:
       - ./consul/service.hcl:/etc/consul.d
 
-
   nginx:
     image: nginx:latest
     container_name: nginx

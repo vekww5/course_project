@@ -2,15 +2,22 @@ package ru.rgaru.resource;
 
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 import ru.rgaru.dto.LearnerDTO;
-
 import ru.rgaru.service.LearnerService;
 import ru.rgaru.service.LearnerServiceExtension;
+
+import org.eclipse.microprofile.metrics.MetricUnits;
+import org.eclipse.microprofile.metrics.annotation.Counted;
+import org.eclipse.microprofile.metrics.annotation.Gauge;
+import org.eclipse.microprofile.metrics.annotation.Timed;
 
 import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+
+// Класс LearnerResource представляет собой ресурс с относительным URI-путем, определенным как /learners
+// Если контекстный корень определен как http://localhost:port, полный URI для доступа к ресурсу будет http://localhost:port/learners
 
 @Path("/learners")
 public class LearnerResource {
@@ -23,6 +30,8 @@ public class LearnerResource {
     LearnerServiceExtension lse;
 
     @GET
+    @Counted(name = "getLearnersCount", description = "Количество получения списка учеников")
+    @Timed(name = "getLearnersTimer", description = "Скорость выполнения запроса", unit = MetricUnits.MILLISECONDS)
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/getLearners")
     @RolesAllowed({"watchSSL"})
@@ -43,7 +52,6 @@ public class LearnerResource {
     @RolesAllowed({"editLearner", "addLearner"})
     public Response insertLearner(LearnerDTO tr){
         return Response.ok(ls.insertLearner(tr)).build();
-        //return Response.ok(lse.insertLearner(tr)).build();
     }
 
     @POST
