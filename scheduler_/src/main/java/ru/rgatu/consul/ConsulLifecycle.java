@@ -32,21 +32,24 @@ public class ConsulLifecycle {
 
     void onStart(@Observes StartupEvent ev) {
 
+        // поиск доступных сервисов
+        HealthClient healthClient = consulClient.healthClient();
+        // обнаружение только подходящих узлов
+        List<ServiceHealth> instances = healthClient.getHealthyServiceInstances(appName).getResponse();
+        // генерация ид имени  для нового сервиса
+        instanceId = appName + "-" + instances.size();
 
-            HealthClient healthClient = consulClient.healthClient();
-            List<ServiceHealth> instances = healthClient.getHealthyServiceInstances(appName).getResponse();
-            instanceId = appName + "-" + instances.size();
+        // регисрация клиента
+        ImmutableRegistration registration = ImmutableRegistration.builder()
+                .id(instanceId)
+                .name(appName)
+                .address(host_url)
+                .port(port)
+                .putMeta("version", appVersion)
+                .build();
 
-            ImmutableRegistration registration = ImmutableRegistration.builder()
-                    .id(instanceId)
-                    .name(appName)
-                    .address(host_url)
-                    .port(port)
-                    .putMeta("version", appVersion)
-                    .build();
-
-            consulClient.agentClient().register(registration);
-            LOGGER.info("Instance registered: id={}, address={}:{}", registration.getId(),host_url, port);
+        consulClient.agentClient().register(registration);
+        LOGGER.info("Instance registered: id={}, address={}:{}", registration.getId(), host_url, port);
 
     }
 

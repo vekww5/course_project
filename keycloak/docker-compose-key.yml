@@ -16,10 +16,6 @@ services:
       #KC_HOSTNAME_URL: http://192.168.122.1:8085
       #KC_HOSTNAME_ADMIN_URL: http://192.168.122.1:8085
 
-      #KC_HTTP_ENABLED: "true"
-      #PROXY_ADDRESS_FORWARDING: "true"
-      #VIRTUAL_HOST: keycloak
-
     volumes:
       - ./realm.json:/keycloak/realm.json:ro
     ports:

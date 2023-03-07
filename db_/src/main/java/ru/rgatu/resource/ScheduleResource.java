@@ -1,5 +1,8 @@
 package ru.rgatu.resource;
 
+import org.eclipse.microprofile.metrics.MetricUnits;
+import org.eclipse.microprofile.metrics.annotation.Counted;
+import org.eclipse.microprofile.metrics.annotation.Timed;
 import ru.rgatu.entity.Schedule;
 import ru.rgatu.service.ScheduleService;
 
@@ -16,6 +19,8 @@ public class ScheduleResource {
     ScheduleService ssch;
 
     @GET
+    @Counted(name = "getSchedulesCount", description = "Просмотренно расписаний")
+    @Timed(name = "getSchedulesTimer", description = "Скорость выполнения запроса", unit = MetricUnits.MILLISECONDS)
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/getSchedules")
     @RolesAllowed({"watchSSL"})
@@ -31,6 +36,8 @@ public class ScheduleResource {
     }
 
     @POST
+    @Counted(name = "insertScheduleCount", description = "Добавлено расписаний")
+    @Timed(name = "insertScheduleTimer", description = "Скорость выполнения запроса", unit = MetricUnits.MILLISECONDS)
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/insertSchedule")
@@ -49,6 +56,8 @@ public class ScheduleResource {
     }
 
     @DELETE
+    @Counted(name = "deleteScheduleCount", description = "Удалено расписаний")
+    @Timed(name = "deleteScheduleTimer", description = "Скорость выполнения запроса", unit = MetricUnits.MILLISECONDS)
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{id_schedule}")
     @RolesAllowed({"editSch"})

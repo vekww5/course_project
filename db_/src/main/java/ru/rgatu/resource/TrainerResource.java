@@ -1,5 +1,8 @@
 package ru.rgatu.resource;
 
+import org.eclipse.microprofile.metrics.MetricUnits;
+import org.eclipse.microprofile.metrics.annotation.Counted;
+import org.eclipse.microprofile.metrics.annotation.Timed;
 import ru.rgatu.entity.Trainer;
 import ru.rgatu.service.TrainerService;
 
@@ -16,6 +19,8 @@ public class TrainerResource {
     TrainerService ts;
 
     @GET
+    @Counted(name = "getTrainersCount", description = "Количество получения списка тренеров")
+    @Timed(name = "getTrainersTimer", description = "Скорость выполнения запроса", unit = MetricUnits.MILLISECONDS)
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/getTrainers")
     @RolesAllowed({"watchTH"})
@@ -31,6 +36,8 @@ public class TrainerResource {
     }
 
     @POST
+    @Counted(name = "insertTrainerCount", description = "Количество добавленных тренеров")
+    @Timed(name = "insertTrainerTimer", description = "Скорость выполнения запроса", unit = MetricUnits.MILLISECONDS)
     @Path("/insertTrainer")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -49,6 +56,8 @@ public class TrainerResource {
     }
 
     @DELETE
+    @Counted(name = "deleteTrainerCount", description = "Количество удаленных тренеров")
+    @Timed(name = "deleteTrainerTimer", description = "Скорость выполнения запроса", unit = MetricUnits.MILLISECONDS)
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{id_trainer}")
     @RolesAllowed({"editTrainer"})

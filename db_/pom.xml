@@ -97,6 +97,10 @@
             <artifactId>consul-client</artifactId>
             <version>${consul-client.version}</version>
         </dependency>
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-smallrye-metrics</artifactId>
+        </dependency>
     </dependencies>
     <build>
         <plugins>

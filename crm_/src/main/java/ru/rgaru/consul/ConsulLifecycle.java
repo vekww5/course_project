@@ -4,9 +4,8 @@ import com.orbitz.consul.Consul;
 import com.orbitz.consul.HealthClient;
 import com.orbitz.consul.model.agent.ImmutableRegistration;
 import com.orbitz.consul.model.health.ServiceHealth;
-//import org.slf4j.Logger;
-//import org.slf4j.LoggerFactory;
-import org.jboss.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import io.quarkus.runtime.ShutdownEvent;
 import io.quarkus.runtime.StartupEvent;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
@@ -17,9 +16,8 @@ import java.util.List;
 
 
 public class ConsulLifecycle {
-    //private static final Logger LOGGER = LoggerFactory.getLogger(ConsulLifecycle.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ConsulLifecycle.class);
 
-    private static final Logger LOG = Logger.getLogger(ConsulLifecycle.class);
     private static String instanceId;
 
     @Inject
@@ -34,9 +32,6 @@ public class ConsulLifecycle {
     String host_url;
 
     void onStart(@Observes StartupEvent ev) {
-        //ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
-        //executorService.schedule(() -> {
-
             HealthClient healthClient = consulClient.healthClient();
             List<ServiceHealth> instances = healthClient.getHealthyServiceInstances(appName).getResponse();
             instanceId = appName + "-" + instances.size();
@@ -50,15 +45,12 @@ public class ConsulLifecycle {
                     .build();
 
             consulClient.agentClient().register(registration);
-            //LOGGER.info("Instance registered: id={}, address={}:{}", registration.getId(),host_url, port);
-            LOG.info("Some useful log message");
-       // }, 5000, TimeUnit.MILLISECONDS);
+            LOGGER.info("Instance registered: id={}, address={}:{}", registration.getId(),host_url, port);
     }
 
     void onStop(@Observes ShutdownEvent ev) {
-        System.out.println(instanceId);
         consulClient.agentClient().deregister(instanceId);
 
-        //LOGGER.info("Instance de-registered: id={}", instanceId);
+        LOGGER.info("Instance de-registered: id={}", instanceId);
     }
 }

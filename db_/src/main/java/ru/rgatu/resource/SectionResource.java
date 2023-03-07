@@ -1,5 +1,8 @@
 package ru.rgatu.resource;
 
+import org.eclipse.microprofile.metrics.MetricUnits;
+import org.eclipse.microprofile.metrics.annotation.Counted;
+import org.eclipse.microprofile.metrics.annotation.Timed;
 import ru.rgatu.entity.Section;
 import ru.rgatu.service.SectionService;
 
@@ -16,6 +19,8 @@ public class SectionResource {
     SectionService ss;
 
     @GET
+    @Counted(name = "getSectionsCount", description = "Просмотривали список секциий")
+    @Timed(name = "getSectionsTimer", description = "Скорость выполнения запроса", unit = MetricUnits.MILLISECONDS)
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/getSections")
     @RolesAllowed({"watchSSL"})
@@ -39,6 +44,8 @@ public class SectionResource {
     }
 
     @POST
+    @Counted(name = "insertSectionCount", description = "Количество добавленных секциий")
+    @Timed(name = "insertSectionTimer", description = "Скорость выполнения запроса", unit = MetricUnits.MILLISECONDS)
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/insertSection")
@@ -57,6 +64,8 @@ public class SectionResource {
     }
 
     @DELETE
+    @Counted(name = "deleteSectionCount", description = "Количество удаленных секциий")
+    @Timed(name = "deleteSectionTimer", description = "Скорость выполнения запроса", unit = MetricUnits.MILLISECONDS)
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{id_section}")
     @RolesAllowed({"editSection"})

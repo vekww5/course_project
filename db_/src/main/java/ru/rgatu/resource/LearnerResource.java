@@ -3,6 +3,11 @@ package ru.rgatu.resource;
 import ru.rgatu.entity.Learner;
 import ru.rgatu.service.LearnerService;
 
+import org.eclipse.microprofile.metrics.MetricUnits;
+import org.eclipse.microprofile.metrics.annotation.Counted;
+import org.eclipse.microprofile.metrics.annotation.Gauge;
+import org.eclipse.microprofile.metrics.annotation.Timed;
+
 import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.ws.rs.*;
@@ -16,6 +21,8 @@ public class LearnerResource {
     LearnerService ls;
 
     @GET
+    @Counted(name = "getLearnersCount", description = "Количество получения списка учеников")
+    @Timed(name = "getLearnersTimer", description = "Скорость выполнения запроса", unit = MetricUnits.MILLISECONDS)
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/getLearners")
     @RolesAllowed({"watchSSL"})
@@ -24,6 +31,7 @@ public class LearnerResource {
     }
 
     @GET
+    @Timed(name = "getLearnerByIdTimer", description = "Скорость выполнения запроса", unit = MetricUnits.MILLISECONDS)
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{id_learner}")
     public Response getLearnerById(@PathParam("id_learner") Long id_learner){
@@ -31,6 +39,8 @@ public class LearnerResource {
     }
 
     @POST
+    @Counted(name = "insertLearnerCount", description = "Количество добавленных учеников")
+    @Timed(name = "insertLearnerTimer", description = "Скорость добавления ученика", unit = MetricUnits.MILLISECONDS)
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/insertLearner")
@@ -40,6 +50,7 @@ public class LearnerResource {
     }
 
     @POST
+    @Timed(name = "updateLearnerTimer", description = "Скорость изменения ученика", unit = MetricUnits.MILLISECONDS)
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/updateLearner")
@@ -49,6 +60,8 @@ public class LearnerResource {
     }
 
     @DELETE
+    @Counted(name = "deleteLearnerCount", description = "Количество удаленный учеников")
+    @Timed(name = "deleteLearnerTimer", description = "Скорость удаления ученика", unit = MetricUnits.MILLISECONDS)
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{id_learner}")
     @RolesAllowed({"editLearner"})
