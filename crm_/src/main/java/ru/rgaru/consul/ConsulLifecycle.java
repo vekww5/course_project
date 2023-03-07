@@ -32,10 +32,14 @@ public class ConsulLifecycle {
     String host_url;
 
     void onStart(@Observes StartupEvent ev) {
+            // поиск доступных сервисов
             HealthClient healthClient = consulClient.healthClient();
+            // обнаружение только подходящих узлов
             List<ServiceHealth> instances = healthClient.getHealthyServiceInstances(appName).getResponse();
+            // генерация ид имени  для нового сервиса
             instanceId = appName + "-" + instances.size();
-            System.out.println(instanceId);
+
+            // регисрация клиента
             ImmutableRegistration registration = ImmutableRegistration.builder()
                     .id(instanceId)
                     .name(appName)

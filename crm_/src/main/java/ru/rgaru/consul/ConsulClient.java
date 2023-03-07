@@ -13,6 +13,7 @@ public class ConsulClient {
 
         @Produces
         public Consul ConsulClientFunc(){
+                // создается обьект клиент консула с указанным url
                 return Consul.builder().withUrl(consul_url).build();
         }
 

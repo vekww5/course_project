@@ -46,10 +46,7 @@ public class LearnerService {
         return learnerServiceExtension.getLearners();
     }
 
-    // Получение утвержденного списка
-//    public List<Learner> getEnrolledLearners(){
-//        return em.createQuery("select l from Learner l where enrolled = true", Learner.class).getResultList();
-//    }
+
     // Поиск по ID
     public LearnerDTO getLearnerById(Long id_learner){
         return learnerServiceExtension.getLearnerById(id_learner);

@@ -1,22 +1,22 @@
 datasources:
-  # <string, required> Sets the name you use to refer to
-  # the data source in panels and queries.
+  # Устанавливает имя, которое вы используете для ссылки на
+  # источник данных в панелях и запросах.
 - name: prometheus
-  # <string, required> Sets the access mode, either
-  # proxy or direct (Server or Browser in the UI).
-  # Some data sources are incompatible with any setting
-  # but proxy (Server).
+  # Устанавливает режим доступа либо
+  # прокси или прямой (сервер или браузер в пользовательском интерфейсе).
+  # Некоторые источники данных несовместимы ни с одной настройкой
+  # но прокси (Сервер).
   access: proxy
-  # <string, required> Sets the data source type.
+  # Задает тип источника данных.
   type: prometheus
-  # <string> Sets a custom UID to reference this
-  # data source in other parts of the configuration.
-  # If not specified, Grafana generates one.
+  # Устанавливает пользовательский UID для ссылки на этот
+  # источник данных в других частях конфигурации.
+  # Если не указано, Grafana создаст его.
   url: 'http://prometheus:9090'
-  # <bool> Toggles whether the data source is pre-selected
-  # for new panels. You can set only one default
-  # data source per organization.
+  # Переключает, выбран ли источник данных заранее
+  # для новых панелей. Вы можете установить только одно значение по умолчанию
+  # источник данных для каждой организации.
   isDefault: true
-  # <bool> Allows users to edit data sources from the
-  # Grafana UI.
+  # Позволяет пользователям редактировать источники данных из
+  # Интерфейс Графана.
   editable: true
